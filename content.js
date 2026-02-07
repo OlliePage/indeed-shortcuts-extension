@@ -63,7 +63,7 @@
 
   // ── Click Utility ──────────────────────────────────────────────────
 
-  function safeClick(action, label) {
+  function safeClick(action, label, type) {
     const el = getButton(action);
     if (!el) {
       showToast("Not found: " + label, "error");
@@ -75,7 +75,7 @@
       return false;
     }
     el.click();
-    showToast(label, "success");
+    showToast(label, type || "success");
     return true;
   }
 
@@ -99,27 +99,27 @@
     switch (e.key.toLowerCase()) {
       case "a":
         e.preventDefault();
-        safeClick("shortlist", "Shortlisted ✓");
+        safeClick("shortlist", "Shortlisted ✓", "success");
         break;
 
       case "s":
         e.preventDefault();
-        safeClick("undecided", "Undecided ?");
+        safeClick("undecided", "Undecided ?", "warning");
         break;
 
       case "d":
         e.preventDefault();
-        safeClick("reject", "Rejected ✕");
+        safeClick("reject", "Rejected ✕", "error");
         break;
 
       case "f":
         e.preventDefault();
-        safeClick("next", "Next →");
+        safeClick("next", "Next →", "info");
         break;
 
       case "g":
         e.preventDefault();
-        safeClick("prev", "← Previous");
+        safeClick("prev", "← Previous", "info");
         break;
 
       default:

@@ -34,3 +34,7 @@
 .indeed-shortcuts-toast.info {
   background: #2557a7;
 }
+
+.indeed-shortcuts-toast.warning {
+  background: #d97706;
+}
