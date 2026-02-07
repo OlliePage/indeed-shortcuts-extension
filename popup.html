@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 260px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 16px;
+      background: #fff;
+      color: #1a1a1a;
+    }
+    h2 {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: #2557a7;
+    }
+    .subtitle {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .shortcut-row {
+      display: flex;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .shortcut-row:last-child { border-bottom: none; }
+    kbd {
+      display: inline-block;
+      min-width: 26px;
+      text-align: center;
+      padding: 2px 7px;
+      margin-right: 10px;
+      font-family: "SF Mono", "Consolas", monospace;
+      font-size: 13px;
+      font-weight: 600;
+      background: #f4f4f4;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 1px 0 #aaa;
+    }
+    .action {
+      font-size: 13px;
+      color: #333;
+    }
+    .note {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #888;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <h2>Indeed Candidate Shortcuts</h2>
+  <p class="subtitle">Home row, left hand</p>
+
+  <div class="shortcut-row">
+    <kbd>A</kbd>
+    <span class="action">Accept / Shortlist ✓</span>
+  </div>
+  <div class="shortcut-row">
+    <kbd>S</kbd>
+    <span class="action">Skip / Undecided ?</span>
+  </div>
+  <div class="shortcut-row">
+    <kbd>D</kbd>
+    <span class="action">Decline / Reject ✕</span>
+  </div>
+  <div class="shortcut-row">
+    <kbd>F</kbd>
+    <span class="action">Forward / Next →</span>
+  </div>
+  <div class="shortcut-row">
+    <kbd>G</kbd>
+    <span class="action">Go back / Previous ←</span>
+  </div>
+
+  <p class="note">Shortcuts are disabled while typing in text fields. Works on employers.indeed.com candidate pages.</p>
+</body>
+</html>
