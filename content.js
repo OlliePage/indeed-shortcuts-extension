@@ -1,5 +1,5 @@
 /**
- * Indeed Candidate Shortcuts v1.2
+ * Indeed Candidate Shortcuts v1.3
  * Keyboard shortcuts for rapid candidate review on employers.indeed.com
  *
  * Home-row layout (left hand, QWERTY):
@@ -8,6 +8,7 @@
  *   D = Decline / Reject (✕)
  *   F = Forward / Next candidate →
  *   G = Go back / Previous candidate ←
+ *   C = CV / Download candidate's CV ↓
  */
 
 (function () {
@@ -59,6 +60,58 @@
     toastTimer = setTimeout(() => {
       container.className = "indeed-shortcuts-toast";
     }, 1200);
+  }
+
+  // ── Download CV Utility ───────────────────────────────────────────
+
+  function downloadCV() {
+    // Try 1: Inline download link (visible on the resume panel)
+    const inlineLink = document.querySelector(
+      'a[data-testid="download-resume-inline"]'
+    );
+    if (inlineLink) {
+      inlineLink.click();
+      showToast("Downloading CV ↓", "success");
+      return;
+    }
+
+    // Try 2: Download link already visible in the More Actions dropdown
+    const menuLink = document.querySelector(
+      'a[data-testid="download-resume-moreActions"]'
+    );
+    if (menuLink) {
+      menuLink.click();
+      showToast("Downloading CV ↓", "success");
+      return;
+    }
+
+    // Try 3: Open the More Actions menu, then click the download link
+    const moreBtn =
+      document.querySelector('button#rightSectionActionsOverflow') ||
+      document.querySelector('button[aria-label="More actions"]');
+    if (!moreBtn) {
+      showToast("Not found: Download CV", "error");
+      console.warn("[Indeed Shortcuts] More Actions button not found");
+      return;
+    }
+
+    moreBtn.click();
+
+    // Wait briefly for the dropdown menu to render, then click Download CV
+    setTimeout(() => {
+      const link = document.querySelector(
+        'a[data-testid="download-resume-moreActions"]'
+      );
+      if (link) {
+        link.click();
+        showToast("Downloading CV ↓", "success");
+      } else {
+        showToast("Not found: Download CV", "error");
+        console.warn(
+          "[Indeed Shortcuts] Download CV link not found in menu"
+        );
+      }
+    }, 300);
   }
 
   // ── Click Utility ──────────────────────────────────────────────────
@@ -122,6 +175,11 @@
         safeClick("prev", "← Previous", "info");
         break;
 
+      case "c":
+        e.preventDefault();
+        downloadCV();
+        break;
+
       default:
         break;
     }
@@ -131,10 +189,10 @@
 
   document.addEventListener("keydown", handleKeydown, true);
 
-  const VERSION = "1.2";
+  const VERSION = "1.3";
 
   console.log(
-    `[Indeed Shortcuts v${VERSION}] Active — A=Shortlist, S=Undecided, D=Reject, F=Next, G=Prev`
+    `[Indeed Shortcuts v${VERSION}] Active — A=Shortlist, S=Undecided, D=Reject, F=Next, G=Prev, C=Download CV`
   );
 
   // Show version toast briefly on load so you can confirm the reload worked

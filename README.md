@@ -11,6 +11,7 @@ Navigate and review job candidates quickly using home-row keyboard shortcuts:
 - **D** - Decline / Reject (✕)
 - **F** - Forward / Next candidate →
 - **G** - Go back / Previous candidate ←
+- **C** - CV / Download candidate's CV ↓
 
 ## Installation
 
@@ -42,7 +43,7 @@ The extension automatically activates on `employers.indeed.com` pages. Simply us
 The shortcuts are designed for left-hand operation on QWERTY keyboards, keeping your right hand free for mouse navigation or note-taking:
 
 ```
-A (Accept)    S (Skip)    D (Decline)    F (Forward)    G (Go back)
+A (Accept)    S (Skip)    D (Decline)    F (Forward)    G (Go back)    C (CV)
 ```
 
 ## Development
@@ -66,12 +67,13 @@ If Indeed changes their DOM structure, update the selectors in `content.js`:
 
 - `SELECTORS` object contains the primary data-testid selectors
 - `FALLBACK` object provides aria-label fallbacks
+- The `downloadCV()` function uses its own selectors for the download link and More Actions menu
 
 ## Compatibility
 
 - **Browser**: Chrome, Edge, and other Chromium-based browsers (Manifest V3)
 - **Site**: employers.indeed.com
-- **Version**: 1.2.0
+- **Version**: 1.3.0
 
 ## License
 
