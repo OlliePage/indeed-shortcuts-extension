@@ -195,7 +195,7 @@
 
   document.addEventListener("keydown", handleKeydown, true);
 
-  const VERSION = "1.3";
+  const VERSION = "1.3.1";
 
   console.log(
     `[Indeed Shortcuts v${VERSION}] Active — A=Shortlist, S=Undecided, D=Reject, F=Next, G=Prev, C=Download CV`
