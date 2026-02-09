@@ -152,31 +152,37 @@
     switch (e.key.toLowerCase()) {
       case "a":
         e.preventDefault();
+        e.stopPropagation();
         safeClick("shortlist", "Shortlisted ✓", "success");
         break;
 
       case "s":
         e.preventDefault();
+        e.stopPropagation();
         safeClick("undecided", "Undecided ?", "warning");
         break;
 
       case "d":
         e.preventDefault();
+        e.stopPropagation();
         safeClick("reject", "Rejected ✕", "error");
         break;
 
       case "f":
         e.preventDefault();
+        e.stopPropagation();
         safeClick("next", "Next →", "info");
         break;
 
       case "g":
         e.preventDefault();
+        e.stopPropagation();
         safeClick("prev", "← Previous", "info");
         break;
 
       case "c":
         e.preventDefault();
+        e.stopPropagation();
         downloadCV();
         break;
 
